@@ -1,21 +1,39 @@
 import path from 'path';
 
 import { config as buildConfig } from './wdio.conf';
-
-buildConfig.capabilities = [{
-    browserName: 'chrome',
-    'goog:chromeOptions': {
-        args: [
-            '--disable-infobars',
-            '--window-size=1280,800',
-            '--headless',
-            '--no-sandbox',
-            '--disable-gpu',
-            '--disable-setuid-sandbox',
-            '--disable-dev-shm-usage',
-        ],
+const chromeConfig = {
+    args: [
+        '--disable-infobars',
+        '--window-size=1280,800',
+        '--headless',
+        '--no-sandbox',
+        '--disable-gpu',
+        '--disable-setuid-sandbox',
+        '--disable-dev-shm-usage',
+    ],
+}
+buildConfig.capabilities = [
+    {
+        browserName: 'chrome',
+        'goog:chromeOptions': chromeConfig,
     },
-}];
+    {
+        browserName: 'assetFirm',
+        'goog:chromeOptions': chromeConfig,
+    },
+    {
+        browserName: 'advisorFirm',
+        'goog:chromeOptions': chromeConfig,
+    },
+    {
+        browserName: 'verifierFirm',
+        'goog:chromeOptions': chromeConfig,
+    },
+    {
+        browserName: 'masterFirm',
+        'goog:chromeOptions': chromeConfig,
+    }
+];
 
 buildConfig.port = 9516;
 buildConfig.services = [
